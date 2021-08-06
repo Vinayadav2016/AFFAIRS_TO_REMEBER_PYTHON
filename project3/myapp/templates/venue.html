@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>party reg</title>
+</head>
+<body>
+{% if success %}
+    <h1>venue Saved Successfully</h1>
+{% endif %}
+<form method="post" enctype="multipart/form-data">   <!-- as we are having multiple images thats why enctype is compulsory to use-->
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>Venue Name:</td>
+            <td>
+                <input type="text" name="venuename" required="required"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Profile Photo 1:</td>
+            <td>
+                <input type="file" name="profile_pic_1"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Profile Photo 2:</td>
+            <td>
+                <input type="file" name="profile_pic_2"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Profile Photo 3:</td>
+            <td>
+                <input type="file" name="profile_pic_3"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Profile Photo 4:</td>
+            <td>
+                <input type="file" name="profile_pic_4"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Profile Photo 5:</td>
+            <td>
+                <input type="file" name="profile_pic_5"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Profile Photo 6:</td>
+            <td>
+                <input type="file" name="profile_pic_6"/>
+            </td>
+        </tr>
+
+        <tr>
+                <td>city</td>
+                <td>
+                    <select name="city">
+                        <option value="">--select Role--</option>
+                        <option value="Jaipur">jaipur</option>
+                        <option value="Delhi">delhi</option>
+                        <option value="Mumbai">mumbai</option>
+                        <option value="Udaipur">udaipur</option>
+                        <option value="Jodhpur">jodhpur</option>
+                        <option value="Nagpur">nagpur</option>
+
+                        <option value="Chennai">chennai</option>
+                        <option value="Banglore">banglore</option>
+                    </select>
+                </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" name="register" value="Register"/>
+                <input type="reset" value="CANCEL"/>
+            </td>
+        </tr>
+
+
+
+    </table>
+</form>
+</body>
+</html>

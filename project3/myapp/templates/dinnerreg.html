@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dinner registartion</title>
+</head>
+<body>
+{% if success %}
+     <h1>user registered succesfully</h1>
+  {% endif %}
+
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    <table>
+       <tr>
+           <td>resturant nmae</td>
+           <td>
+               <input type="text" name="hname"/>
+           </td>
+       </tr>
+       <tr>
+           <td>resturant address</td>
+           <td>
+               <input type="text" name="hadd"/>
+           </td>
+       </tr>
+       <tr>
+           <td>price per person</td>
+           <td>
+               <input type="text" name="hpp"/>
+           </td>
+       </tr>
+       <tr>
+            <td>Profile Photo 1:</td>
+            <td>
+                <input type="file" name="h_pic_1"/>
+            </td>
+        </tr>
+       <tr>
+            <td>Profile Photo 2:</td>
+            <td>
+                <input type="file" name="h_pic_2"/>
+            </td>
+        </tr>
+
+        <tr>
+                <td>cusine1</td>
+                <td>
+                    <select name="cusine1">
+                        <option value="">--select Role--</option>
+                        <option value="none">ni</option>
+                        <option value="northindian">ni</option>
+                        <option value="fastfood">ff</option>
+                        <option value="chinese">ch</option>
+                        <option value="southindian">si</option>
+                        <option value="italian">it</option>
+                        <option value="bakery">ba</option>
+                    </select>
+                </td>
+
+        <tr>
+                <td>cusine2</td>
+                <td>
+                    <select name="cusine2">
+                        <option value="">--select Role--</option>
+                        <option value="none">ni</option>
+                        <option value="northindian">ni</option>
+                        <option value="fastfood">ff</option
+                        <option value="chinese">ch</option>>
+                        <option value="southindian">si</option>
+                        <option value="italian">it</option>
+                        <option value="bakery">ba</option>
+                    </select>
+                </td>
+            </tr>
+        <tr>
+                <td>cusine3</td>
+                <td>
+                    <select name="cusine3">
+                        <option value="">--select Role--</option>
+                        <option value="none">ni</option>
+                        <option value="northindian">ni</option>
+                        <option value="fastfood">ff</option>
+                        <option value="chinese">ch</option>
+                        <option value="southindian">si</option>
+                        <option value="italian">it</option>
+                        <option value="bakery">ba</option>
+                    </select>
+                </td>
+            </tr>
+        <tr>
+                <td>cusine4</td>
+                <td>
+                    <select name="cusine4">
+                        <option value="">--select Role--</option>
+                        <option value="none">ni</option>
+                        <option value="northindian">ni</option>
+                        <option value="fastfood">ff</option>
+                        <option value="chinese">ch</option>
+
+                        <option value="southindian">si</option>
+                        <option value="italian">it</option>
+                        <option value="bakery">ba</option>
+                    </select>
+                </td>
+            </tr>
+        <tr>
+                <td>veg or nonveg</td>
+                <td>
+                    <select name="typef">
+                        <option value="">--select Role--</option>
+                        <option value="veg">veg</option>
+                        <option value="non-veg">non-veg</option>
+                        <option value="both">both</option>
+                    </select>
+                </td>
+            </tr>
+        <tr>
+                <td>drinks</td>
+                <td>
+                    <select name="drinks">
+                        <option value="">--select Role--</option>
+                        <option value="yes">yes</option>
+                        <option value="no">no</option>
+
+                    </select>
+                </td>
+            </tr>
+        <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="register"/>
+                    <input type="reset" value="cancel">
+                </td>
+            </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,243 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+
+  /* Make the image fully responsive */
+    .carousel-inner img {
+      width: 100%;
+      height: 100%;
+    }
+.footer {
+  padding: 20px; /* Some padding */
+   /* Center text*/
+  background: #495057; /* Grey background */
+}
+
+
+    </style>
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+
+      <a class="navbar-brand" href="{% url 'homepage' %}">HOME</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'party' %}">PARTY</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'dates' %}">DATES</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'familydinner' %}">FAMILY DINNER</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'wedding' %}">WEDDING</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'gallery' %}">GALLERY</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'aboutus' %}">ABOUTUS</a>
+      </li>
+
+    </ul>
+  </div>
+  <div>
+     <img src="{% static 'images/index.png' %}" alt="Smiley face" style="float:right;width:200px;height:50px;">
+  </div>
+</nav>
+
+
+ <div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+    <li data-target="#demo" data-slide-to="3"></li>
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'images/DATES.png' %}" alt="PARTY" width="1100" height="100">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/partyyy.png' %}" alt="ROMANTIC DATES" width="1100" height="100">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/FAMILY DINNER.jpg' %}" alt="FAMILY DINNERS " width="1100" height="100">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/WEDDING.png' %}" alt="WEDDING " width="1100" height="100">
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+ </div>
+
+<div class="col-sm-12 sticky-top">
+
+
+
+  <form method="post" class="fixed-bottom float-right bg-transparent" >
+        {% csrf_token %}
+        <table class="col-sm-4 float-right bg-transparent" >
+
+
+            <tr class="bg-transparent">
+                <th colspan="2"><h3>SHOW BOOKING</h3></th>
+            </tr>
+        <tr class="bg-transparent">
+                <th>PHONE NUMBER:</th>
+                <td class="bg-transparent">
+                    <input colspan="2" class="col-sm-12 bg-transparent" type="text" name="phone"/>
+                </td>
+            </tr>
+            <tr class="bg-transparent">
+                <td class="bg-transparent">
+                    <input type="reset" class="col-sm-12 bg-transparent" value="CANCEL">
+
+
+                </td>
+                <td class="bg-transparent">
+                    <input colspan="2" type="submit" class="col-sm-12 bg-transparent" name="SHOW" value="SHOW"/>
+                </td>
+            </tr>
+
+      </table>
+
+    </form>
+    <div >
+    {% if success %}
+   {% if user %}
+             <div class="container">
+  <h2>YOUR BOOKINGS for resturant</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>RESTURANT NAMR</th>
+        <th>DATE</th>
+        <th>NO OF PERSONS</th>
+      </tr>
+    </thead>
+    <tbody>
+     {% for d in user %}
+      <tr>
+        <td>{{ d.hname }}</td>
+        <td>{{ d.date }}</td>
+        <td>{{ d.person }}</td>
+      </tr>
+  {% endfor %}
+
+    </tbody>
+  </table>
+
+</div>
+  {% endif %}
+   {% if user1 %}
+             <div class="container">
+  <h2>YOUR BOOKINGS for party or wedding</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>NAME</th>
+        <th>EMAIL</th>
+        <th>DATE</th>
+          <th>TYPE</th>
+          <th>NO OF GUEST</th>
+          <th>VENUE SELECTED</th>
+          <th>DECOR SELECTED</th>
+          <th>PHOTOGRAPJER</th>
+          <th>DJ & SOUND</th>
+
+      </tr>
+    </thead>
+    <tbody>
+     {% for d in user1 %}
+      <tr>
+        <td>{{ d.pname }}</td>
+        <td>{{ d.pemail }}</td>
+        <td>{{ d.pdate }}</td>
+      <td>{{ d.ptype }}</td>
+      <td>{{ d.pguest }}</td>
+      <td>{{ d.venuename }}</td>
+      <td>{{ d.decorname }}</td>
+      <td>{{ d.photo }}</td>
+      <td>{{ d.ds }}</td>
+      </tr>
+  {% endfor %}
+
+    </tbody>
+  </table>
+
+</div>
+  {% endif %} {% endif %}
+    </div>
+
+</div>
+<div class="footer ">
+  <div class="card-group col-sm-6">
+  <div class="card bg-transparent">
+    <div class="card-body text-center">
+      <h1>PAGES</h1>
+        <a href="{% url 'party' %}">Party</a><br>
+      <a href="{% url 'wedding' %}">WEDDING</a><br>
+        <a href="{% url 'dates' %}">DATES</a><br>
+        <a href="{% url 'familydinner' %}">FAMILY DINNER</a><br>
+        <a href="{% url 'aboutus' %}">ABOUT US</a><br>
+        <a href="{% url 'gallery' %}">GALLERY</a><br>
+        <d1>
+            <dt>Copyright</dt>
+            <dt>ALL RIGHTS RESERVED</dt>
+        </d1>
+    </div>
+  </div>
+  <div class="card bg-transparent">
+    <div class="card-body text-center">
+<div class="conatiner">
+          <h1 class="display-6">Contact Us!</h1>
+          <dl>
+              <dt>Bussines Mails🧧 :</dt>
+              <dd>- gouravkhurana310@gmail.com.</dd>
+              <dd>- vinayadav20016@gmail.com.</dd>
+              <dt>Telephone📞:</dt>
+              <dd>9829847310</dd>
+              <dd>8005568656</dd>
+
+          </dl>
+
+      </div>
+</div>
+
+</div>
+
+</body>
+</html>

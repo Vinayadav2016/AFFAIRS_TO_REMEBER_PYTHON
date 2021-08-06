@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Decor</title>
+</head>
+<body>
+{% if success %}
+    <h1>Decorations Saved Successfully</h1>
+{% endif %}
+<form method="post" enctype="multipart/form-data">   <!-- as we are having multiple images thats why enctype is compulsory to use-->
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>Decoration name:</td>
+            <td>
+                <input type="text" name="decorname" required="required"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Profile Photo 1:</td>
+            <td>
+                <input type="file" name="profile_pic_1"/>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" name="register" value="Register"/>
+            </td>
+        </tr>
+
+
+
+    </table>
+</form>
+</body>
+</html>

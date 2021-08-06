@@ -1,0 +1,121 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>WEDDING</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+</head>
+<style>
+    body {
+        background-color: moccasin;
+    }
+</style>
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+
+<div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'homepage' %}">HOME</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'party' %}">PARTY</a>
+      </li>
+
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'dates' %}">DATES</a>
+      </li>
+            <li class="nav-item">
+        <a class="nav-link" href="{% url 'familydinner' %}">FAMILYDINNER</a>
+      </li>
+
+
+<a class="navbar-brand" href="{% url 'wedding' %}">WEDDING</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+         <span class="navbar-toggler-icon"></span>
+</button>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'gallery' %}">GALLERY</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'aboutus' %}">ABOUT US</a>
+      </li>
+
+    </ul>
+  </div>
+  <div>
+     <img src="{% static 'images/index.png' %}" alt="Smiley face" style="float:right;width:200px;height:50px;">
+  </div>
+</nav>
+
+<div class="text-center">
+  <h1 class="display-3">PERSONALIZE YOUR WEDDING</h1>
+</div>
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+  <table>
+
+
+      <br>
+      <h2>Full Name:<br></h2>
+        <input class="col-sm-3" type="text" placeholder="ENTER YOUR NAME"  name="name" >
+      <br>
+      <h2>   Enter Mobile Number:<br></h2>
+        <input class="col-sm-3" type="tel" pattern="[789][0-9]{9}" name="mobile">
+        <br>
+         <h2>   Enter Email ID:<br></h2>
+        <input class="col-sm-3"  type="email" name="email">
+        <br>
+     <h2>   Date of Event:<br></h2>
+        <input class="col-sm-3" type="date" name="date">
+        <br>
+
+     <h2>  Estimated Numbers of Guest:<br></h2>
+        <input class="col-sm-2" type="text" name="guest">
+        <br>
+      <br>
+
+
+
+
+        <br>
+      <h2>  Additional Services:</h2>
+        <div class="custom-control custom-checkbox mb-3 ">
+      <input type="checkbox" class="custom-control-input" id="customCheck"  name="photo">
+      <label class="custom-control-label" for="customCheck">PHOTGRAPHER</label>
+    </div>
+        <div class="custom-control custom-checkbox mb-3 ">
+      <input type="checkbox" class="custom-control-input" id="customCheck2" name="dj">
+      <label class="custom-control-label" for="customCheck2">DJ & SOUND</label>
+    </div>
+        <br>
+      <h2>VENUE:<br></h2>
+      <input type="text" name="vname" value="{{ vname}}" readonly="readonly/">
+      <br>
+      <h2>THEME:<br></h2>
+      <input type="text" name="dname" value="{{ dname}}" readonly="readonly/">
+
+        <h4>*catering and budget will be discussed further.*</h4>
+        <h4>Admins will directly contact you after you hit submit button</h4>
+
+        <input type="submit"  value="Submit">
+        <input type="reset"  value="cancel">
+
+
+</div>
+
+  </table>
+</form>
+</html>
+
+

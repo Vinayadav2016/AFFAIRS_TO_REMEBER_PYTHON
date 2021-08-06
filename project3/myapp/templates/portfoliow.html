@@ -1,0 +1,172 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>PARTY</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+    <style>
+  /* Make the image fully responsive */
+    .carousel-inner img {
+      width: 100%;
+      height: 100%;
+    }
+        .vertical-menu {
+  width: 200px;
+}
+
+.vertical-menu a {
+  background-color: #ebebeb;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.vertical-menu a:hover {
+  background-color: #ebebeb;
+}
+.vertical-menu div.custom-control {
+  background-color: #ebebeb;
+}
+
+.vertical-menu a.active {
+  background-color: #ebebeb;
+  color: green;
+}
+.vertical-menu a.text {
+  background-color: #c69500;
+  color: white;
+}
+
+
+
+        * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+.header {
+  text-align: center;
+  padding: 32px;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+  max-width: 50%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+
+
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+
+<div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'homepage' %}">HOME</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'party' %}">PARTY</a>
+      </li>
+
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'dates' %}">DATES</a>
+      </li>
+            <li class="nav-item">
+        <a class="nav-link" href="{% url 'familydinner' %}">FAMILYDINNER</a>
+      </li>
+
+<a class="navbar-brand" href="{% url 'wedding' %}">WEDDING</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+         <span class="navbar-toggler-icon"></span>
+
+  </button>
+
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'gallery' %}">GALLERY</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'aboutus' %}">ABOUT US</a>
+      </li>
+
+    </ul>
+  </div>
+  <div>
+     <img src="{% static 'images/index.png' %}" alt="Smiley face" style="float:right;width:200px;height:50px;">
+  </div>
+</nav>
+
+<!--show the contant of resturant-->
+<div>
+
+<h1 class="font-italic">WEDDING</h1>
+{% if success %}
+          <h1>REGISTERED SUCCESSFULLY</h1>
+      {% endif %}
+<div class="row">
+
+    <div class="card col-sm-12" style="width:600px">
+
+
+
+
+        {% for d in my_data %}
+    <div class="row">
+  <div class="column">
+    <img src="{{ d.image1.url }}" style="width:100%">
+    <img src="{{ d.image2.url }}" style="width:100%">
+    <img src="{{ d.image3.url }}" style="width:100%">
+
+  </div>
+  <div class="column">
+    <img src="{{ d.image4.url }}" style="width:100%">
+    <img src="{{ d.image5.url }}" style="width:100%">
+    <img src="{{ d.image6.url }}" style="width:100%">
+    </div>
+   <div class="card-body fixed-bottom float-right">
+
+      <h4 class="card-title" >VENUE NAME:{{ d.venuename }}</h4>
+      <a href="{% url 'partyd' d.venuename %}" class="btn btn-primary" >BOOK NOW</a>
+    </div>
+</div>
+
+{% endfor %}
+
+</div>
+</div>
+</div>
+</body>
+</html>
